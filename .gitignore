@@ -1,0 +1,4 @@
+# dev stuff
+.vscode
+.pytest_cache
+env

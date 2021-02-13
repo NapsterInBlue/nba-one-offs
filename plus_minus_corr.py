@@ -21,7 +21,13 @@ def get_plus_minus_corr(player_url: str) -> float:
     df = dfs[stat_table_idx]
 
     # few tables have headers again, in the middle
-    df = df[df["Date"] != "Date"]
+    df = df[df["Date"] != "Date"].copy()
+
+    # drop rows where player was inactive
+    #   although, you *could* make a compelling argument that the
+    #   +/- just becomes the margin -> corr = 1
+    df.loc[:, "GS"] = pd.to_numeric(df.loc[:, "GS"], errors="coerce")
+    df = df.dropna(subset=["GS"])
 
     # only need these two columns
     margin = df["Unnamed: 7"].str.extract("([\-\d]+)").astype(int)

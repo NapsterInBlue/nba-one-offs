@@ -17,3 +17,16 @@ Simple script that takes a `gamelog` URL from [basketball-reference.com](https:/
 Call it with
 
 `python plus_minus_corr.py [PASTED URL]`
+
+For instance, I sat down to write this because when I looked at Steph Curry's early-season statbox, the relationship between his `+/-` and the Warriors' win margin was pretty pronounced, *visually*
+
+![img](docs/curry_statbox_20210213.png)
+
+
+Now, [what constitutes a "good" correlation coefficient](https://statisticsbyjim.com/basics/correlations/) really depends on your domain. It's as low as `.4` in some applications, while north of `.95` in others. Regardless, I expected it to be high, but not *this* high, lol
+
+```
+$ python plus_minus_corr.py https://www.basketball-reference.com/players/c/curryst01/gamelog/2021/
+0.9184385517782597
+```
+
